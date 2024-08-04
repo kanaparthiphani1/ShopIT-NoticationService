@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: "notificationservice"
+  cloud:
+    function:
+      definition: email
+    stream:
+      bindings:
+        email-in-0:
+          destination: send-email
+          group: ${spring.application.name}
+      kafka:
+        binder:
+          brokers:
+            - localhost:9092
+server:
+  port: 8088
+
